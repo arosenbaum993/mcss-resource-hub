@@ -1,1 +1,216 @@
-Hub Coming Soon
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCSS Coaching Resource Hub</title>
+<style>
+  :root{
+    --red:#A32D2D; --red-dark:#791F1F; --red-pale:#FCEBEB;
+    --ink:#1a1a1a; --muted:#6b6b6b; --hair:#e6e4e0; --bg:#ffffff;
+    --radius:12px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:400 16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:1040px;margin:0 auto;padding:24px 20px 64px}
+  .brand{display:flex;align-items:center;gap:12px;border-bottom:2px solid var(--red);
+    padding-bottom:16px;margin-bottom:28px;flex-wrap:wrap}
+  .brand .mark{width:44px;height:44px;border-radius:10px;background:var(--red);color:#fff;
+    display:flex;align-items:center;justify-content:center;font:700 20px Georgia,serif}
+  .brand h1{font:500 20px/1.2 Georgia,serif;margin:0}
+  .brand .sub{margin:2px 0 0;color:var(--muted);font-size:13px}
+  .brand select{margin-left:auto}
+  select{min-width:220px;padding:8px 10px;border:1px solid var(--hair);border-radius:8px;
+    background:#fff;color:var(--ink);font:inherit}
+  .eyebrow{font-size:13px;color:var(--muted);margin:0 0 10px}
+  .stages{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:28px}
+  .stage{background:#fff;border:1px solid var(--hair);border-left:4px solid var(--red);
+    border-radius:var(--radius);padding:14px 16px;cursor:pointer}
+  .stage.active{background:var(--red-pale);border-color:var(--red)}
+  .stage .ic{color:var(--red);font-size:18px}
+  .stage h3{margin:6px 0 2px;font-size:15px;font-weight:500}
+  .stage p{margin:0;color:var(--muted);font-size:13px}
+  .filters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+  .filters .lbl{font-size:13px;color:var(--muted);min-width:56px}
+  .chip{border:1px solid var(--hair);background:#fff;color:var(--muted);border-radius:20px;
+    padding:5px 13px;font-size:13px;cursor:pointer;font:inherit}
+  .chip.on{background:var(--red-pale);border-color:var(--red);color:var(--red-dark)}
+  .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin:20px 0 28px}
+  .tool{background:var(--red-pale);border-radius:var(--radius);padding:13px;text-decoration:none;display:block}
+  .tool h4{margin:6px 0 2px;font-size:14px;font-weight:500;color:var(--red-dark)}
+  .tool p{margin:0;font-size:12px;color:var(--red)}
+  .tool .ic{color:var(--red);font-size:18px}
+  .libhead{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 12px}
+  .count{font-size:12px;color:var(--muted)}
+  .lib{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+  .res{background:#fff;border:1px solid var(--hair);border-radius:var(--radius);padding:15px;
+    display:flex;flex-direction:column}
+  .res .top{display:flex;justify-content:flex-end;margin-bottom:8px}
+  .res .stageTag{font-size:11px;border:1px solid var(--hair);border-radius:20px;padding:2px 9px;color:var(--muted)}
+  .res h4{margin:0 0 4px;font-size:14px;font-weight:500;line-height:1.35}
+  .res .desc{margin:0 0 12px;font-size:13px;color:var(--muted);flex:1}
+  .res .meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .res .tag{font-size:11px;border:1px solid var(--hair);border-radius:4px;padding:1px 7px;color:var(--muted)}
+  .res a.open{margin-left:auto;color:var(--red);text-decoration:none;font-size:13px}
+  .state{padding:40px 0;text-align:center;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="brand">
+    <div class="mark">M</div>
+    <div>
+      <h1>McIntosh County Schools</h1>
+      <div class="sub">6-12 instructional coaching hub</div>
+    </div>
+    <select id="stdPick"><option value="">Start with a standard...</option></select>
+  </header>
+
+  <p class="eyebrow">Where are you in planning?</p>
+  <div class="stages">
+    <div class="stage" data-stage="Desired results"><div class="ic">&#9678;</div><h3>Desired results</h3><p>Standards, DOK, essential questions</p></div>
+    <div class="stage" data-stage="Evidence"><div class="ic">&#10003;</div><h3>Evidence</h3><p>Milestones-aligned tasks, rubrics</p></div>
+    <div class="stage" data-stage="Learning plan"><div class="ic">&#8594;</div><h3>Learning plan</h3><p>Texts, lessons, organizers</p></div>
+  </div>
+
+  <div class="filters">
+    <span class="lbl">Grade</span>
+    <div id="gradeChips">
+      <button class="chip on" data-k="grade" data-v="all">All</button>
+      <button class="chip" data-k="grade" data-v="6">6</button>
+      <button class="chip" data-k="grade" data-v="7">7</button>
+      <button class="chip" data-k="grade" data-v="8">8</button>
+      <button class="chip" data-k="grade" data-v="HS">High school</button>
+    </div>
+  </div>
+  <div class="filters" style="margin-bottom:22px">
+    <span class="lbl">Subject</span>
+    <div id="subjChips">
+      <button class="chip on" data-k="subj" data-v="all">All</button>
+      <button class="chip" data-k="subj" data-v="ELA">ELA</button>
+      <button class="chip" data-k="subj" data-v="Math">Math</button>
+      <button class="chip" data-k="subj" data-v="Science">Science</button>
+      <button class="chip" data-k="subj" data-v="Social studies">Social studies</button>
+    </div>
+  </div>
+
+  <p class="eyebrow">Planning tools</p>
+  <div class="tools" id="tools"></div>
+
+  <div class="libhead">
+    <p class="eyebrow" style="margin:0">Resource library</p>
+    <span class="count" id="count"></span>
+  </div>
+  <div id="lib" class="lib"><div class="state">Loading resources...</div></div>
+</div>
+
+<script>
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxgsvAzwv3sSJZaYIrp0x3XIhrmQLFO5monJ338vzj3kT5XQqj1EVFt0lskaxHn-sH6NQ/exec";
+
+  const TOOLS = [
+    { name:"Unit builder",        note:"Draft a full BWD unit",  url:"#" },
+    { name:"Planning dashboard",  note:"Curriculum map view",    url:"#" },
+    { name:"Standard unpacker",   note:"GSE to DOK stems",       url:"#" },
+    { name:"Milestones data",     note:"Target by standard",     url:"#" }
+  ];
+
+  const state = { grade:"all", subj:"all", stage:null, std:"" };
+  let DATA = [];
+  const lib = document.getElementById("lib");
+  const countEl = document.getElementById("count");
+
+  function splitCell(v){ return String(v||"").split(",").map(function(x){return x.trim();}).filter(Boolean); }
+
+  function matches(r){
+    const g = splitCell(r.Grade), s = splitCell(r.Subject);
+    const gradeOk = state.grade==="all" || g.indexOf("all")>-1 || g.indexOf(state.grade)>-1;
+    const subjOk  = state.subj==="all"  || s.indexOf("all")>-1 || s.indexOf(state.subj)>-1;
+    const stageOk = !state.stage || r.Stage===state.stage;
+    const stdOk   = !state.std || splitCell(r.Standard).indexOf(state.std)>-1;
+    return gradeOk && subjOk && stageOk && stdOk;
+  }
+
+  function card(r){
+    const g = splitCell(r.Grade);
+    const gl = (g.indexOf("all")>-1 || g.length===0) ? "6-12" : g.join(", ");
+    return '<div class="res">'
+      + '<div class="top"><span class="stageTag">' + (r.Stage||"") + '</span></div>'
+      + '<h4>' + (r.Title||"") + '</h4>'
+      + '<p class="desc">' + (r.Description||"") + '</p>'
+      + '<div class="meta">'
+      + (r.Type ? '<span class="tag">' + r.Type + '</span>' : '')
+      + '<span class="tag">' + gl + '</span>'
+      + '<a class="open" href="' + (r.Link||"#") + '" target="_blank" rel="noopener">Open &#8599;</a>'
+      + '</div></div>';
+  }
+
+  function render(){
+    const items = DATA.filter(matches);
+    countEl.textContent = items.length + (items.length===1 ? " resource" : " resources");
+    if(!items.length){
+      lib.innerHTML = '<div class="state">Nothing here yet for this combination. Try widening a filter, or check back as we add resources.</div>';
+      return;
+    }
+    lib.innerHTML = items.map(card).join("");
+  }
+
+  function renderTools(){
+    document.getElementById("tools").innerHTML = TOOLS.map(function(t){
+      return '<a class="tool" href="' + t.url + '" target="_blank" rel="noopener">'
+        + '<div class="ic">&#9632;</div><h4>' + t.name + '</h4><p>' + t.note + '</p></a>';
+    }).join("");
+  }
+
+  function buildStdPicker(){
+    const set = {};
+    DATA.forEach(function(r){
+      splitCell(r.Standard).forEach(function(s){
+        if(s && s.toLowerCase()!=="any") set[s]=true;
+      });
+    });
+    const pick = document.getElementById("stdPick");
+    Object.keys(set).sort().forEach(function(s){
+      const o = document.createElement("option");
+      o.value = s; o.textContent = s; pick.appendChild(o);
+    });
+  }
+
+  document.getElementById("stdPick").addEventListener("change", function(e){
+    state.std = e.target.value; render();
+  });
+
+  document.querySelectorAll(".chip").forEach(function(c){
+    c.addEventListener("click", function(){
+      const isGrade = c.dataset.k === "grade";
+      const group = isGrade ? "#gradeChips" : "#subjChips";
+      state[isGrade ? "grade" : "subj"] = c.dataset.v;
+      document.querySelectorAll(group + " .chip").forEach(function(x){ x.classList.remove("on"); });
+      c.classList.add("on");
+      render();
+    });
+  });
+
+  document.querySelectorAll(".stage").forEach(function(s){
+    s.addEventListener("click", function(){
+      const val = s.dataset.stage;
+      if(state.stage === val){ state.stage = null; s.classList.remove("active"); }
+      else {
+        state.stage = val;
+        document.querySelectorAll(".stage").forEach(function(x){ x.classList.remove("active"); });
+        s.classList.add("active");
+      }
+      render();
+    });
+  });
+
+  renderTools();
+  fetch(WEB_APP_URL)
+    .then(function(r){ return r.json(); })
+    .then(function(d){ DATA = d.items || []; buildStdPicker(); render(); })
+    .catch(function(){
+      lib.innerHTML = '<div class="state">Could not load the resource list. Refresh the page, or check the Apps Script URL.</div>';
+    });
+</script>
+</body>
+</html>
